@@ -1,8 +1,6 @@
 package com.fundamentosplatzi.springboot.fundamentos.configuration;
 
-import com.fundamentosplatzi.springboot.fundamentos.bean.MyBean;
-import com.fundamentosplatzi.springboot.fundamentos.bean.MyBean2Implement;
-import com.fundamentosplatzi.springboot.fundamentos.bean.MyBeanImplement;
+import com.fundamentosplatzi.springboot.fundamentos.bean.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,4 +10,18 @@ public class MyConfigurationBean {
     public MyBean beanOperation(){
         return new MyBean2Implement();
     }
+
+
+    @Bean
+    public MyOperation beanOperationOperation(){
+        return new MyOperationImplement();
+    }
+
+
+    @Bean
+    public MyBeanWithDependecy beanOperationOperationWithDependency(MyOperation myOperation){
+        return new MyBeanWithDependecyImplement(myOperation);
+    }
+
+
 }
